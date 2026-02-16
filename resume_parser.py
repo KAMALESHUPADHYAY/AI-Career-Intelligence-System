@@ -1,16 +1,17 @@
-import spacy
-import pandas as pd
+# simple skill extraction 
 
-nlp = spacy.load("en_core_web_sm")
-
-skills_list = ["python","machine learning","data science","sql","java","c++","excel"]
+skills_list = [
+    "python","machine learning","data science","sql",
+    "java","c++","excel","html","css","javascript",
+    "flask","pandas","numpy","deep learning"
+]
 
 def extract_skills(text):
-    doc = nlp(text.lower())
+    text = text.lower()
     found = []
 
-    for token in doc:
-        if token.text in skills_list:
-            found.append(token.text)
+    for skill in skills_list:
+        if skill in text:
+            found.append(skill)
 
     return list(set(found))
